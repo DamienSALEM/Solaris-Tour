@@ -3,7 +3,7 @@ from .models import TypeVaisseau, TypePlanete, Planete, ActivitePlanete, Vol, Re
 
 
 class TypeVaisseauAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nom')
+    list_display = ('id', 'nom', 'description', 'nbr_passager_max')
     list_display_links = ('id', 'nom')
 
 admin.site.register(TypeVaisseau, TypeVaisseauAdmin)
@@ -45,7 +45,7 @@ admin.site.register(Reservation, ReservationAdmin)
 
 
 class HotelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'planete', 'nom', 'adresse')
+    list_display = ('id', 'planete', 'nom', 'theme')
     list_display_links = ('id', 'planete', 'nom')
 
 admin.site.register(Hotel, HotelAdmin)
