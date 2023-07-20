@@ -35,7 +35,7 @@ function PlaneteDetails() {
           <li key={vol.id}>
             <p>Planète de départ : {vol.planete_depart_nom}</p>
             <p>Planète d'arrivée : {vol.planete_arrivee_nom}</p>
-            <p>Type de vaisseau : {vol.type_vaisseau.nom}</p>
+            <p>Type de vaisseau : {vol.type_vaisseau_nom}</p>
             <p>Date du vol : {vol.date_vol}</p>
             <p>Durée du vol : {vol.duree_vol} heures</p>
           </li>

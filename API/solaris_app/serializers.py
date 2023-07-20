@@ -30,6 +30,7 @@ class VolSerializer(serializers.ModelSerializer):
 
     planete_depart_nom = serializers.CharField(source='planete_depart.nom') 
     planete_arrivee_nom = serializers.CharField(source='planete_arrivee.nom')
+    type_vaisseau_nom = serializers.CharField(source='type_vaisseau.nom')
     class Meta:
         model = models.Vol
         fields = '__all__'
