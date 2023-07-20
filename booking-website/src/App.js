@@ -5,6 +5,7 @@ import Login from './Login';
 import Contact from './Contact';
 import Home from './Home';
 import Reservation from './Reservation';
+import PaymentPage from './PaymentPage';
 
 
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/login/*" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<Home />} />
+          <Route exact path="/payment" component={PaymentPage} />
         </Routes>
       </div>
     </Router>
