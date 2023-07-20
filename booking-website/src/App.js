@@ -6,6 +6,9 @@ import Contact from './Contact';
 import Home from './Home';
 import Reservation from './Reservation';
 import PaymentPage from './PaymentPage';
+import ListePlanete from './ListePlanete';
+import PlaneteDetails from './PlaneteDetails';
+
 
 
 const App = () => {
@@ -42,6 +45,11 @@ const App = () => {
                   Contact
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/liste" className="nav-link">
+                  Liste planetes
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -52,6 +60,8 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<Home />} />
           <Route exact path="/payment" component={PaymentPage} />
+          <Route path="/liste" element={<ListePlanete />} />
+          <Route path="/planete-details/:id" element={<PlaneteDetails />} />
         </Routes>
       </div>
     </Router>
