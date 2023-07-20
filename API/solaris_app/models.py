@@ -47,6 +47,9 @@ class Vol(models.Model):
 
     def __str__(self):
         return f"Vol de {self.planete_depart} à {self.planete_arrivee}"
+    
+    def titre(self):
+        return f"Vol de {self.planete_depart} à {self.planete_arrivee}"
 
 
 class Reservation(models.Model):

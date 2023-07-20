@@ -122,3 +122,13 @@ def get_planete_details(request, planete_id):
     }
 
     return Response(response_data)
+
+@api_view(['GET'])
+def vol_details(request, vol_id):
+    try:
+        vol = models.Vol.objects.get(pk=vol_id)
+    except models.Vol.DoesNotExist:
+        return Response({'error': 'Le vol spécifié est introuvable.'}, status=400)
+    
+    serializer = seria.VolSerializer(vol)
+    return Response(serializer.data, status=200)

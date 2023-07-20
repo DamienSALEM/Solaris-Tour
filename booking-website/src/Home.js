@@ -1,58 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Home.css'; // Import the CSS file for custom styles
+import './Home.css';
 
 const Home = () => {
-  // Sample data for ships, activities, and flights
-  const ships = [
-    // Sample data for ships
-    // ...
-  ];
+  const [vols, setVols] = useState([]);
 
-  const activities = [
-    // Sample data for activities
-    // ...
-  ];
+  useEffect(() => {
+    fetchVols();
+  }, []);
 
-  const flights = [
-    // Sample data for flights
-    // ...
-  ];
+  const fetchVols = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/API/vols');
+      const volsData = response.data.map((vol) => ({
+        ...vol,
+        titre: `${vol.planete_depart_nom} à ${vol.planete_arrivee_nom}` // Ajouter la propriété titre
+      }));
+      setVols(volsData);
+    } catch (error) {
+      console.error('Erreur lors de la récupération des vols:', error);
+    }
+  };
 
   return (
     <div className="container home-page">
       <h2>Home Page</h2>
 
       <div className="list-container">
-        <h3>List of Ships</h3>
-        <ul>
-          {ships.map(ship => (
-            <li key={ship.id}>{ship.name} - {ship.type}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="list-container">
-        <h3>List of Activities</h3>
-        <ul>
-          {activities.map(activity => (
-            <li key={activity.id}>{activity.name} - {activity.location}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="list-container">
         <h3>List of Flights</h3>
         <ul>
-          {flights.map(flight => (
-            <li key={flight.id}>{flight.departure} to {flight.arrival} - Duration: {flight.duration}</li>
+          {vols.map((vol) => (
+            <li key={vol.id}>
+              <Link to={`/vol/${vol.id}`}>
+                <h4>{vol.titre}</h4>
+              </Link>
+              <p>Flight Date: {vol.date_vol}</p>
+              <p>Flight Duration: {vol.duree_vol} hours</p>
+            </li>
           ))}
         </ul>
       </div>
 
       <footer className="footer">
         <p>Company Name - All rights reserved</p>
-        <Link to="/contact" className="btn btn-primary">Contact Us</Link>
+        <a href="/contact" className="btn btn-primary">Contact Us</a>
       </footer>
     </div>
   );

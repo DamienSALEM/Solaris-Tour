@@ -8,6 +8,7 @@ import Reservation from './Reservation';
 import PaymentPage from './PaymentPage';
 import ListePlanete from './ListePlanete';
 import PlaneteDetails from './PlaneteDetails';
+import VolDetails from './VolDetails';
 
 
 
@@ -62,6 +63,7 @@ const App = () => {
           <Route exact path="/payment" component={PaymentPage} />
           <Route path="/liste" element={<ListePlanete />} />
           <Route path="/planete-details/:id" element={<PlaneteDetails />} />
+          <Route path="/vol/:id" element={<VolDetails />} />
         </Routes>
       </div>
     </Router>

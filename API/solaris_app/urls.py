@@ -10,5 +10,6 @@ urlpatterns = [
     path('hotels', views.hotel_list, name='hotels'),
     path('vol/<int:pk>', views.unique_vol, name='vol'),
     path('reservation/<int:vol_id>', views.create_reservation, name='reservation'),
-    path('details-planete/<int:planete_id>', views.get_planete_details)
+    path('details-planete/<int:planete_id>', views.get_planete_details),
+    path('details-vol/<int:vol_id>', views.vol_details)
 ]

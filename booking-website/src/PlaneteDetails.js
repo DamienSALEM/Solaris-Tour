@@ -29,15 +29,13 @@ function PlaneteDetails() {
   return (
     <div>
       <h1>Détails de la planète {planete.nom}</h1>
-      <h2>Vols :</h2>
+      <h2>Vols prévus :</h2>
       <ul>
         {vols.map((vol) => (
           <li key={vol.id}>
             <p>Planète de départ : {vol.planete_depart_nom}</p>
-            <p>Planète d'arrivée : {vol.planete_arrivee_nom}</p>
             <p>Type de vaisseau : {vol.type_vaisseau_nom}</p>
             <p>Date du vol : {vol.date_vol}</p>
-            <p>Durée du vol : {vol.duree_vol} heures</p>
           </li>
         ))}
       </ul>
