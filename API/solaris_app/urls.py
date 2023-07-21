@@ -3,6 +3,7 @@ from django.urls import path
 import solaris_app.views as views
 
 urlpatterns = [
+    path('register', views.register_user, name='register'),
     path('vols', views.vol_list, name='vols'),
     path('planetes', views.planetes_list, name='planetes'),
     path('vaisseaux', views.type_vaisseau_list, name='vaisseaux'),
