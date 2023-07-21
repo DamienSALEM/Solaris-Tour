@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import check_password
 
 
 @api_view(['GET', 'POST'])
@@ -167,11 +168,18 @@ def login(request):
     email = request.data.get('email')
     password = request.data.get('password')
     if email and password:
-        user = authenticate(email=email, password=password)
+        try:
+            user = models.User.objects.get(email=email)
+        except models.User.DoesNotExist:
+            return Response({'status': 401, 'message': 'Identifiants invalides'})
         if user:
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'status': 200, 'token': str(token), 'user_id': user.id})
+            if check_password(password,user.password):
+                token, _ = Token.objects.get_or_create(user=user)
+                return Response({'status': 200, 'token': str(token), 'user_id': user.id})
+            else:
+                return Response({'status':401,'message':'Invalid identifiers'})
         else:
+            print(email,password)
             return Response({'status': 401, 'message': 'User not found'})
     else:
         return Response({'status': 400, 'message': 'Please use email and password to login'})
