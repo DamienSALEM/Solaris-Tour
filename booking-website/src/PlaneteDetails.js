@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 function PlaneteDetails() {
   const {id} = useParams();
   const [planeteDetails, setPlaneteDetails] = useState(null);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     fetchPlaneteDetails();
@@ -12,7 +13,11 @@ function PlaneteDetails() {
 
   const fetchPlaneteDetails = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/API/details-planete/${id}`);
+      const response = await axios.get(`http://127.0.0.1:8000/API/details-planete/${id}`, {
+        headers: {
+          Authorization: `Token ${token}`, // Ajouter l'en-tête d'autorisation
+        },
+      });
       console.log(response.data);
       setPlaneteDetails(response.data);
     } catch (error) {

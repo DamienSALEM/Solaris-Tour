@@ -6,6 +6,7 @@ import './VolDetails.css';
 const VolDetails = () => {
   const { id } = useParams();
   const [vol, setVol] = useState(null);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     fetchVolDetails();
@@ -13,7 +14,11 @@ const VolDetails = () => {
 
   const fetchVolDetails = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/API/details-vol/${id}`);
+      const response = await axios.get(`http://127.0.0.1:8000/API/details-vol/${id}`, {
+        headers: {
+          Authorization: `Token ${token}`, // Inclure le token dans les en-têtes
+        },
+      });
       setVol(response.data);
     } catch (error) {
       console.error('Erreur lors de la récupération des détails du vol:', error);
@@ -21,15 +26,13 @@ const VolDetails = () => {
   };
   const handleReservation = async () => {
     try {
-      const userId = '123'; // Replace with the actual user ID
+      const userId = '123';
       const response = await axios.post(`http://127.0.0.1:8000/API/reservation/${id}`, {
         user_id: userId,
       });
       console.log('Reservation successful:', response.data);
-      // Add any additional logic or notifications for successful reservation
     } catch (error) {
       console.error('Error occurred during reservation:', error);
-      // Add error handling or notifications for failed reservation
     }
   };
   

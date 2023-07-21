@@ -14,4 +14,5 @@ urlpatterns = [
     path('reservation/<int:vol_id>', views.create_reservation, name='reservation'),
     path('details-planete/<int:planete_id>', views.get_planete_details),
     path('details-vol/<int:vol_id>', views.vol_details)
+
 ]
