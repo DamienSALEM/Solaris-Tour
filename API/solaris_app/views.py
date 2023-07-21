@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate
 
 
 @api_view(['GET', 'POST'])
@@ -159,3 +160,18 @@ def register_user(request):
         token, _ = Token.objects.get_or_create(user=user)
         return Response({'status': 200, 'données': serializer.data, 'token': str(token)})
     return Response({'status': 403, 'erreur': serializer.errors})
+
+
+@api_view(['POST'])
+def login(request):
+    email = request.data.get('email')
+    password = request.data.get('password')
+    if email and password:
+        user = authenticate(email=email, password=password)
+        if user:
+            token, _ = Token.objects.get_or_create(user=user)
+            return Response({'status': 200, 'token': str(token), 'user_id': user.id})
+        else:
+            return Response({'status': 401, 'message': 'User not found'})
+    else:
+        return Response({'status': 400, 'message': 'Please use email and password to login'})
