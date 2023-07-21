@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 
 class TypeVaisseau(models.Model):
     nom = models.CharField(max_length=100)
+    description = models.TextField()
+    vitesse = models.FloatField()
+    autonomie = models.FloatField()
+    nbr_passager_max = models.PositiveIntegerField()
+    nbr_equipage = models.PositiveIntegerField()
 
     def __str__(self):
         return self.nom
@@ -41,6 +46,9 @@ class Vol(models.Model):
     duree_vol = models.IntegerField()
 
     def __str__(self):
+        return f"Vol de {self.planete_depart} à {self.planete_arrivee}"
+    
+    def titre(self):
         return f"Vol de {self.planete_depart} à {self.planete_arrivee}"
 
 
