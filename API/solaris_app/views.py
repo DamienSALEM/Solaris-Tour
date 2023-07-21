@@ -23,7 +23,7 @@ def vol_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes[IsAuthenticated]
+@permission_classes([IsAuthenticated])
 def unique_vol(request, pk):
     try:
         vol = models.Vol.objects.get(pk=pk)
@@ -69,7 +69,7 @@ def unique_vol(request, pk):
 
 
 @api_view(['POST'])
-@permission_classes[IsAuthenticated]
+@permission_classes([IsAuthenticated])
 def create_reservation(request, vol_id):
     user = models.User.objects.get(id=request.data['user_id'])
     try:
@@ -113,7 +113,7 @@ def type_vaisseau_list(request):
 
 
 @api_view(['GET'])
-@permission_classes[IsAuthenticated]
+@permission_classes([IsAuthenticated])
 def get_planete_details(request, planete_id):
     try:
         planete = models.Planete.objects.get(pk=planete_id)
@@ -140,7 +140,7 @@ def get_planete_details(request, planete_id):
 
 
 @api_view(['GET'])
-@permission_classes[IsAuthenticated]
+@permission_classes([IsAuthenticated])
 def vol_details(request, vol_id):
     try:
         vol = models.Vol.objects.get(pk=vol_id)
