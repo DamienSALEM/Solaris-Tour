@@ -26,11 +26,14 @@ L'application doit afficher la liste des vols disponible avec:
 Elle doit avoir un système d'utilisateur où l'utilisateur peut réserver un vol et voir les détails du vol
 Elle doit également disposer d'une page de contact.
 
-## Rapport
+## Mercredi
 
-### Mercredi
+Adrien : 
 
-Adrien:
+- je me suis lancé dans la création du MCD avec le logiciel 'Win'Design' pour le projet ainsi que l'étude d nombre de tables necessaires a l'élaboration du projet. 
+
+- j'ai ensuite également défini les classes du modèle avec leur attributs, et leur methodes afin de structurer notre travail.
+
 Ahmed Amine:
 
 - Créer la structure du projet React : Initialiser un nouveau projet React.js avec create-react-app.
@@ -48,7 +51,8 @@ Ahmed Amine:
 
 ### Jeudi
 
-Adrien:
+Adrien: Le jeudi matin j'ai consacré du temps à peaufiner le modèle conceptuel de données en prenant en compte les remarques de mes collegues avant de me plonger dans l'amélioration du code, notamment en rendant la fonction "unique_vol" capable de récupérer les données de la planète d'arrivée et aussi la création de nouvelles routes API. En parallèle, j'ai réalisé l'intégration de l'API au front-end, notamment l'affichage de la liste des vols et la liste des planetes ce qui a permis à notre application d'afficher les données a l'interface utilisateur.
+
 Ahmed Amine:
 
 - Afficher la liste des destinations : Récupérer les données des destinations à partir de l'API et les afficher sur une page dédiée.
@@ -64,6 +68,8 @@ Ahmed Amine:
 - début de la fonction des users et des tokens.
 
 ### Vendredi
+
+Adrien: Le vendredi, en début de matiné j'ai réalisé le PowerPoint de présentation du projet et continué l'intégration de l'API au front-end, en mettant l'accent sur l'inscription et la connexion des utilisateur en utilisant les Token , en milieu d'aprés midi nous avons réalisée la présentation du projet
 
 Adrien:
 Ahmed Amine:
