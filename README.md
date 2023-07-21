@@ -26,20 +26,36 @@ L'application doit afficher la liste des vols disponible avec:
 Elle doit avoir un système d'utilisateur où l'utilisateur peut réserver un vol et voir les détails du vol
 Elle doit également disposer d'une page de contact.
 
-## Mercredi
+## Rapport
+
+### Mercredi
 
 Adrien:
 Ahmed Amine:
 Damien:
 
-## Jeudi
+* Initialisation du repository Git
+* creation de l'architecture du projet
+* initialisation du projet Django
+* création de l'application Solaris_app
+* début de création des views et urls.
+
+### Jeudi
 
 Adrien:
 Ahmed Amine:
 Damien:
 
-## Vendredi
+* Finalisations des views et des urls simple
+* début de la fonction des users et des tokens.
+
+### Vendredi
 
 Adrien:
 Ahmed Amine:
 Damien:
+
+* Finalisation de la fonction des tokens et des users
+* Synchronisation avec le front
+* résolution de bugs
+* préparation au passage oral.
