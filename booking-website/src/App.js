@@ -4,11 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Login';
 import Contact from './Contact';
 import Home from './Home';
-import Reservation from './Reservation';
 import PaymentPage from './PaymentPage';
 import ListePlanete from './ListePlanete';
 import PlaneteDetails from './PlaneteDetails';
 import VolDetails from './VolDetails';
+import Register from './Register';
 
 
 
@@ -32,8 +32,8 @@ const App = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/reservation" className="nav-link">
-                  Reservation
+                <Link to="/inscription" className="nav-link">
+                  inscription
                 </Link>
               </li>
               <li className="nav-item">
@@ -56,12 +56,12 @@ const App = () => {
         </nav>
 
         <Routes>
-          <Route path="/reservation" element={<Reservation />} />
           <Route path="/login/*" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<Home />} />
           <Route exact path="/payment" component={PaymentPage} />
           <Route path="/liste" element={<ListePlanete />} />
+          <Route path="/inscription" element={<Register />} />
           <Route path="/planete-details/:id" element={<PlaneteDetails />} />
           <Route path="/vol/:id" element={<VolDetails />} />
         </Routes>

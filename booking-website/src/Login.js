@@ -3,17 +3,17 @@ import axios from 'axios';
 import Register from './Register';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showRegister, setShowRegister] = useState(false);
 
   const handleLogin = () => {
     // URL de l'API pour la connexion de l'utilisateur
-    const apiUrl = 'https://example.com/api/login/';
+    const apiUrl = 'http://127.0.0.1:8000/API/login';
 
     // Corps de la requête
     const data = {
-      username: username,
+      email: email,
       password: password,
     };
 
@@ -23,7 +23,9 @@ const Login = () => {
       .then((response) => {
         // Gérer la connexion réussie
         console.log('Connexion réussie !');
-        console.log(response.data); // Données de réponse de l'API (si disponibles)
+        console.log(response.data);
+        localStorage.setItem('token', response.data.get('token'));
+        // Données de réponse de l'API (si disponibles)
       })
       .catch((error) => {
         // Gérer l'erreur de connexion
@@ -49,14 +51,14 @@ const Login = () => {
       ) : (
         <form>
           <div className="form-group">
-            <label htmlFor="username">Nom d'utilisateur</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               className="form-control"
-              id="username"
+              id="email"
               placeholder="Entrez votre nom d'utilisateur"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="form-group">

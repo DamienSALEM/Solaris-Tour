@@ -2,78 +2,78 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+  });
 
-  const handleRegister = () => {
-    // URL de l'API pour l'inscription de l'utilisateur
-    const apiUrl = 'https://example.com/api/register/';
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-    // Corps de la requête
-    const data = {
-      username: username,
-      email: email,
-      password: password,
-    };
-
-    // Effectuer une requête POST à l'API
-    axios
-      .post(apiUrl, data)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://127.0.0.1:8000/API/register', formData)
       .then((response) => {
-        // Gérer l'inscription réussie
-        console.log('Inscription réussie !');
-        console.log(response.data); // Données de réponse de l'API (si disponibles)
+        console.log('Registration successful!');
+        console.log(response.data);
+        // You can handle success here, e.g., redirect to a different page.
       })
       .catch((error) => {
-        // Gérer l'erreur d'inscription
-        console.error('Échec de l\'inscription !');
-        console.error(error); // Objet d'erreur renvoyé par l'API (le cas échéant)
+        console.error('Registration failed:');
+        console.error(error.response.data);
+        // Handle error here, e.g., show an error message to the user.
       });
   };
 
   return (
     <div>
-      <h2>Page d'Inscription</h2>
-      <form>
-        <div className="form-group">
-          <label htmlFor="username">Nom d'utilisateur</label>
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>First Name:</label>
           <input
             type="text"
-            className="form-control"
-            id="username"
-            placeholder="Entrez votre nom d'utilisateur"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Adresse e-mail</label>
+        <div>
+          <label>Last Name:</label>
+          <input
+            type="text"
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Email:</label>
           <input
             type="email"
-            className="form-control"
-            id="email"
-            placeholder="Entrez votre adresse e-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Mot de passe</label>
+        <div>
+          <label>Password:</label>
           <input
             type="password"
-            className="form-control"
-            id="password"
-            placeholder="Entrez votre mot de passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div className="d-flex justify-content-between">
-          <button type="button" className="btn btn-primary" onClick={handleRegister}>
-            S'inscrire
-          </button>
-        </div>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
