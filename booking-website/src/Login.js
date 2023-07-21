@@ -24,7 +24,7 @@ const Login = () => {
         // Gérer la connexion réussie
         console.log('Connexion réussie !');
         console.log(response.data);
-        localStorage.setItem('token', response.data.get('token'));
+        localStorage.setItem('token', response.data.token);
         // Données de réponse de l'API (si disponibles)
       })
       .catch((error) => {
