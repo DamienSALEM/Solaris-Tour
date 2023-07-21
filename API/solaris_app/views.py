@@ -113,7 +113,6 @@ def get_planete_details(request, planete_id):
     serializer_hotels = seria.HotelSerializer(hotels, many=True)
     serializer_activites = seria.ActivitePlaneteSerializer(activites, many=True)
     test = serializer_vols.data
-    print(test)
     response_data = {
         'planete': serializer_planete.data,
         'vols': serializer_vols.data,
