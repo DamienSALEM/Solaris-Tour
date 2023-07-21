@@ -25,3 +25,21 @@ L'application doit afficher la liste des vols disponible avec:
 
 Elle doit avoir un système d'utilisateur où l'utilisateur peut réserver un vol et voir les détails du vol
 Elle doit également disposer d'une page de contact.
+
+## Mercredi
+
+Adrien:
+Ahmed Amine:
+Damien:
+
+## Jeudi
+
+Adrien:
+Ahmed Amine:
+Damien:
+
+## Vendredi
+
+Adrien:
+Ahmed Amine:
+Damien:
